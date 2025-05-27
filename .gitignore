@@ -18,12 +18,10 @@ local_output*
 *.log
 *.txt
 *.ipynb
-*figs*/
 *distribution*/
 *.pb/
 *.npz
 
-*.png
 act_scales/
 var30_weights*/
 evaluate_figs*/
