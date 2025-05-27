@@ -3,10 +3,7 @@ import os
 import os.path as osp
 import sys
 
-# 获取当前文件夹的绝对路径
 current_dir = os.path.dirname(os.path.abspath(__file__))
-
-# 将当前文件夹添加到 sys.path
 if current_dir not in sys.path:
     sys.path.append(current_dir)
 
@@ -175,33 +172,8 @@ if __name__ == "__main__":
 
     num_img_per_class = 50
 
-    # save_file_path = f'/home/rjwei/Data_raid/Q-VAR/evaluate_figs_fp16' 
+    save_file_path = f'/home/rjwei/Data/Q-VAR/evaluate_figs_fp6_quant_fc2_special_w_e3m2_a_e2m3_w{args.w_bit}_{args.weight_quant}_a{args.a_bit}_{args.act_quant}_kv{args.kv_bit}' 
 
-    # save_file_path = f'/home/rjwei/Data_raid/Q-VAR/evaluate_figs_fp_quant_e3m0_w{args.w_bit}_{args.weight_quant}_a{args.a_bit}_{args.act_quant}_kv{args.kv_bit}' 
-    # save_file_path = f'/home/rjwei/Data_raid/Q-VAR/evaluate_figs_fp_quant_e2m1_w{args.w_bit}_{args.weight_quant}_a{args.a_bit}_{args.act_quant}_kv{args.kv_bit}' 
-    # save_file_path = f'/home/rjwei/Data_raid/Q-VAR/evaluate_figs_debug' 
-    # save_file_path = f'/home/rjwei/Data_raid/Q-VAR/evaluate_figs_fp_quant_w_e2m1_a_e3m0_w{args.w_bit}_{args.weight_quant}_a{args.a_bit}_{args.act_quant}_kv{args.kv_bit}' 
-
-    # save_file_path = f'/home/rjwei/Data_raid/Q-VAR/evaluate_figs_fp_quant_e2m1_fc2_special_w{args.w_bit}_{args.weight_quant}_a{args.a_bit}_{args.act_quant}_kv{args.kv_bit}' 
-    # save_file_path = f'/home/rjwei/Data_raid/Q-VAR/evaluate_figs_fp_quant_e2m1_fc2_special_method2_w{args.w_bit}_{args.weight_quant}_a{args.a_bit}_{args.act_quant}_kv{args.kv_bit}' 
-    # save_file_path = f'/home/rjwei/Data_raid/Q-VAR/evaluate_figs_fp_quant_e2m1_fc2_fp4_afpq_w{args.w_bit}_{args.weight_quant}_a{args.a_bit}_{args.act_quant}_kv{args.kv_bit}' 
-    
-    # mixed format
-    # save_file_path = f'/home/rjwei/Data_raid/Q-VAR/evaluate_figs_fp_quant_different_type_w{args.w_bit}_{args.weight_quant}_a{args.a_bit}_{args.act_quant}_kv{args.kv_bit}' 
-    # save_file_path = f'/home/rjwei/Data_raid/Q-VAR/evaluate_figs_fp_quant_different_type_fc2_special_w{args.w_bit}_{args.weight_quant}_a{args.a_bit}_{args.act_quant}_kv{args.kv_bit}' 
-    save_file_path = f'/home/rjwei/Data_raid/Q-VAR/evaluate_figs_fp_quant_mixed_fp6_w{args.w_bit}_{args.weight_quant}_a{args.a_bit}_{args.act_quant}_kv{args.kv_bit}' 
-
-    # save_file_path = f'/home/rjwei/Data_raid/Q-VAR/evaluate_figs_rotate_fp_quant_e2m1_fc2_special_w{args.w_bit}_{args.weight_quant}_a{args.a_bit}_{args.act_quant}_kv{args.kv_bit}' 
-    # save_file_path = f'/home/rjwei/Data_raid/Q-VAR/evaluate_figs_block_rotate_fp_quant_e2m1_fc2_special_w{args.w_bit}_{args.weight_quant}_a{args.a_bit}_{args.act_quant}_kv{args.kv_bit}' 
-
-    # save_file_path = f'/home/rjwei/Data_raid/Q-VAR/evaluate_figs_fp6_quant_e2m3_w{args.w_bit}_{args.weight_quant}_a{args.a_bit}_{args.act_quant}_kv{args.kv_bit}' 
-    # save_file_path = f'/home/rjwei/Data_raid/Q-VAR/evaluate_figs_fp6_quant_e3m2_w{args.w_bit}_{args.weight_quant}_a{args.a_bit}_{args.act_quant}_kv{args.kv_bit}' 
-    # save_file_path = f'/home/rjwei/Data_raid/Q-VAR/evaluate_figs_fp6_quant_w_e2m3_a_e3m2_w{args.w_bit}_{args.weight_quant}_a{args.a_bit}_{args.act_quant}_kv{args.kv_bit}' 
-    # save_file_path = f'/home/rjwei/Data_raid/Q-VAR/evaluate_figs_fp6_quant_w_e3m2_a_e2m3_w{args.w_bit}_{args.weight_quant}_a{args.a_bit}_{args.act_quant}_kv{args.kv_bit}' 
-
-    # save_file_path = f'/home/rjwei/Data_raid/Q-VAR/evaluate_figs_fp6_quant_fc2_special_w_e3m2_a_e2m3_w{args.w_bit}_{args.weight_quant}_a{args.a_bit}_{args.act_quant}_kv{args.kv_bit}' 
-
-    # 检查文件夹是否存在，如果不存在则创建
     if not os.path.exists(save_file_path):
         os.makedirs(save_file_path)
     else:

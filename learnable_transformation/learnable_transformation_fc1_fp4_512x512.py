@@ -48,29 +48,6 @@ class SymQuant(torch.autograd.Function):
         return grad_input, grad_clip, None, None,None,None
     
 
-def quantize_to_nearest_grid(x: torch.Tensor, quant_grid: torch.Tensor):
-    """
-    将输入张量 `x` 中的每个元素映射到 `quant_grid` 中的最近邻值。
-    
-    Args:
-        x (torch.Tensor): 输入张量。
-        quant_grid (torch.Tensor): 已排序的量化值网格。
-    
-    Returns:
-        torch.Tensor: 量化后的张量。
-    """
-    # 确保 quant_grid 是升序排列
-    # assert torch.all(torch.eq(quant_grid, torch.sort(quant_grid).values)), "quant_grid must be sorted."
-    
-    # 计算所有绝对距离
-    distances = torch.abs(x.unsqueeze(-1) - quant_grid)  # 形状: (..., len(quant_grid))
-    
-    # 找到每个元素的最小距离索引
-    min_indices = torch.argmin(distances, dim=-1)         # 形状: (...)
-    
-    # 返回对应的 quant_grid 值
-    return quant_grid[min_indices]
-
 
 fp4_e2m1_grid = torch.tensor([-6.0, -4.0, -3.0, -2.0, -1.5, -1.0, -0.5, 0.0, 0.5, 1.0, 1.5, 2.0, 3.0, 4.0, 6.0])
 
@@ -153,7 +130,7 @@ if __name__ == "__main__":
 
     device = f'cuda:{args.cuda}' if torch.cuda.is_available() else 'cpu'
     
-    # # # preprocess: 对于每个step, 把100个样本拼成一个大tensor
+    # # # preprocess
     # for block_idx in range(36):
     #     print("block_idx:", block_idx)
     #     for step_idx in range(10):
@@ -215,7 +192,6 @@ if __name__ == "__main__":
     #             best_loss = total_loss
     #             best_s = learnable_s
             
-    #         # 打印训练进度
     #         print(f"Epoch {i}: Loss={total_loss.item():.6f}")
         
     #     print("best_loss:", best_loss)

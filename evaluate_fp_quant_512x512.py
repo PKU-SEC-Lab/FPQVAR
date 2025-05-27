@@ -3,10 +3,7 @@ import os
 import os.path as osp
 import sys
 
-# 获取当前文件夹的绝对路径
 current_dir = os.path.dirname(os.path.abspath(__file__))
-
-# 将当前文件夹添加到 sys.path
 if current_dir not in sys.path:
     sys.path.append(current_dir)
 
@@ -174,7 +171,6 @@ if __name__ == "__main__":
     # save_file_path = f'/home/rjwei/Data_raid/512x512_img/evaluate_figs_fp6_quant_w_e2m3_a_e3m2_w{args.w_bit}_{args.weight_quant}_a{args.a_bit}_{args.act_quant}_kv{args.kv_bit}' 
     save_file_path = f'/home/rjwei/Data_raid/512x512_img/evaluate_figs_fp4_quant_baseline_w{args.w_bit}_{args.weight_quant}_a{args.a_bit}_{args.act_quant}_kv{args.kv_bit}' 
 
-    # 检查文件夹是否存在，如果不存在则创建
     if not os.path.exists(save_file_path):
         os.makedirs(save_file_path)
     else:
@@ -188,7 +184,6 @@ if __name__ == "__main__":
     for i in range(num_class):
             print(i)
             for k in range(num_iter):
-                # 需要控制每次iter, random seed都不一样，否则会生成一样的图片
                 seed = k + 10
                 class_labels = [i for _ in range(num_img_per_class)]
                 B = len(class_labels)

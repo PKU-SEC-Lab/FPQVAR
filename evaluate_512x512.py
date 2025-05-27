@@ -21,7 +21,6 @@ vae_ckpt = '/home/rjwei/Data_raid/huggingface/models/var/vae_ch160v4096z32.pth'
 var_ckpt = f'/home/rjwei/Data_raid/huggingface/models/var/var_d{MODEL_DEPTH}.pth'
 
 # build vae, var, 512x512
-# 这里应该指的是一条边上的patch num
 patch_nums = (1, 2, 3, 4, 6, 9, 13, 18, 24, 32) 
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -111,7 +110,6 @@ torch.set_float32_matmul_precision('high' if tf32 else 'highest')
 
 
 save_file_path = f'/home/rjwei/Data_raid/512x512_img/evaluate_figs_FP' 
-# 检查文件夹是否存在，如果不存在则创建
 if not os.path.exists(save_file_path):
     os.makedirs(save_file_path)
 else:

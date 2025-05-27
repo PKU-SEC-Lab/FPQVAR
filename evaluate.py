@@ -41,42 +41,6 @@ for p in var.parameters(): p.requires_grad_(False)
 print(f'prepare finished.')
 
 
-# '''save weight'''
-# for layer_idx in range(30):
-#     print(layer_idx)
-#     w_qkv = var.blocks[layer_idx].attn.mat_qkv.weight.data
-#     w_o = var.blocks[layer_idx].attn.proj.weight.data
-#     w_fc1 = var.blocks[layer_idx].ffn.fc1.weight.data
-#     w_fc2 = var.blocks[layer_idx].ffn.fc2.weight.data
-#     w_ada = var.blocks[layer_idx].ada_lin[1].weight.data
-
-#     torch.save(w_o, f"/home/rjwei/Data_raid/Q-VAR/var30_weights/blocks.{layer_idx}.attn.proj.pt")
-#     torch.save(w_fc2, f"/home/rjwei/Data_raid/Q-VAR/var30_weights/blocks.{layer_idx}.ffn.fc2.pt")
-#     torch.save(w_ada, f"/home/rjwei/Data_raid/Q-VAR/var30_weights/blocks.{layer_idx}.ada.pt")
-
-
-
-# total_params_vae_decoder = sum(p.numel() for p in vae.decoder.parameters())
-# print(f"VAE decoder parameters: {total_params_vae_decoder:,}") 
-
-# total_params_var_transformer = sum(p.numel() for p in var.parameters())
-# print(f"VAR parameters: {total_params_var_transformer:,}") 
-
-# r = total_params_vae_decoder / (total_params_vae_decoder + total_params_var_transformer)
-
-
-# net = vae.decoder
-# input = torch.randn(1, 32, 16, 16).to(device)
-# flops, params = profile(net, inputs=(input, ))
-
-# print("FLOPs=", str(flops/1e9) +'{}'.format("G"))
-# print("params=", str(params/1e6)+'{}'.format("M"))
-
-# pdb.set_trace()
-
-
-
-
 ############################# 2. Sample with classifier-free guidance
 
 # set args
